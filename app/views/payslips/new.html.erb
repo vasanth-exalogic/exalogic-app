@@ -9,18 +9,22 @@
       GENERATE PAYSLIP
     </div>
     <%= form_for @payslip do |f|%>
-        <span><%= @create_error%></span>
         <table class="table table-striped table-dark">
           <div class="font-beba-small">
           <tr>
-            <td><%= f.label "Employee ID"%></td>
-            <td><%= @detail.empid%></td>
             <td><%= f.label "Employee Name"%></td>
             <td><%= @detail.fname%></td>
+            <td><%= f.label "Employee ID"%></td>
+            <td><%= @detail.empid%></td>
+          </tr>
+          <tr>
+            <td><%= f.label "Date of Joining"%></td>
+            <td><%= @detail.doj%></td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <td><%= f.label "Generate for"%></td>
-            <td><%= f.select :month, [['MONTH',0],['JANUARY',1],['FEBUARY',2],['MARCH',3],['APRIL',4],['MAY',5],['JUNE',6],['JULY',7],['AUGUST',8],['SEPTEMBER',9],
+            <td><%= f.select :month, [['MONTH',0],['JANUARY',1],['FEBRUARY',2],['MARCH',3],['APRIL',4],['MAY',5],['JUNE',6],['JULY',7],['AUGUST',8],['SEPTEMBER',9],
               ['OCTOBER',10],['NOVEMBER',11],['DECEMBER',12]]%></td>
             <td><%= f.label "Year"%></td>
             <td><%= f.number_field :year, :min=>(@detail.doj.strftime("%Y").to_i), :max=>(Time.now.strftime("%Y").to_i)%></td>
@@ -39,7 +43,7 @@
           </tr>
           <tr>
             <td><%= f.submit "Update"%></td>
-            <td colspan="3"><span><%= @error %></span></td>
+            <td colspan="3"><span><font color="red"><%= @error %></font></span></td>
           </tr>
         </table>
     <% end %>

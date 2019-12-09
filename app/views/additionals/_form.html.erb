@@ -35,7 +35,7 @@
         </tr>
         <tr>
           <td><%= f.label "Notice period in days"%></td>
-          <td><%= f.number_field :Notice%></td>
+          <td><%= f.number_field :notice, :min=>0%></td>
           <td colspan="2"></td>
         </tr>
         <tr>

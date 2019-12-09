@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   resources :payslips, only: [:create, :show]
   get '/payslips/:id/all' => "payslips#index", as: "all_payslips"
   get '/payslips/new/:id' => "payslips#new", as: "new_payslip"
+  get "payslips" => "users#index"
+
+  get '/download/:id' => "payslips#download", as: 'download'
 end
