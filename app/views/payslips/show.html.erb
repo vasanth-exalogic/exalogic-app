@@ -6,6 +6,7 @@
 
   </head>
   <body>
+      <%= link_to 'Home', users_path %>&nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'Download Payslip', "/payslips/"<<@payslip.id.to_s<<".pdf", :target => '_blank' %>
       <fieldset>
         <table>
