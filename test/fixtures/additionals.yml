@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ename: MyString
+  econtact: MyString
+  relation: MyString
+  pskill: MyString
+  sskill1: MyString
+  sskill2: MyString
+  user_id: MyString
+
+two:
+  ename: MyString
+  econtact: MyString
+  relation: MyString
+  pskill: MyString
+  sskill1: MyString
+  sskill2: MyString
+  user_id: MyString

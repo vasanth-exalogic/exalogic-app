@@ -1,0 +1,2 @@
+class Additional < ApplicationRecord
+end

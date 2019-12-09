@@ -1,0 +1,78 @@
+<%= form_for @detail do |f|%>
+<table class="table table-striped table-dark">
+  <% if session[:temp]=='edit' %>
+    <tr>
+      <td class="" style="vertical-align:middle;"><a href="#" style="color:grey; text-decoration:none;"><label>Login Details</label></a></td>
+      <td class="active-tab" style="vertical-align:middle;"><a href="<%= edit_detail_path(@user) %>" style="color:white; text-decoration:none;"><label>Personal Details</label></a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_additional_path(@user) %>" style="color:grey; text-decoration:none;"><label>Additional Details</label></a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_account_path(@user) %>" style="color:grey; text-decoration:none;"><label>Account Details</label></a></td>
+    </tr>
+  <% else %>
+    <tr>
+      <td class="" style="vertical-align:middle; color:grey;"><label>Login Details</label></td>
+      <td class="active-tab" style="vertical-align:middle;"><label>Personal Details</label></td>
+      <td class="" style="vertical-align:middle; color:grey;"><label>Additional Details</label></td>
+      <td class="" style="vertical-align:middle; color:grey;"><label>Account Details</label></td>
+    </tr>
+  <% end%>
+        <tr>
+          <td><%= f.label "Employee ID"%></td>
+          <td><%= "EXA" << (session[:id].to_s).rjust(4,"0") %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label "First Name "%><font color="white">*</font></td>
+          <td><%= f.text_field :fname%><span style="color:white;"><%= @detail.errors[:fname][0] rescue nil%></span></td>
+          <td><%= f.label "Last Name "%><font color="white">*</font></td>
+          <td><%= f.text_field :lname%><span style="color:white;"><%= @detail.errors[:lname][0] rescue nil%></span></td>
+        </tr>
+        <tr>
+          <td><%= f.label "Date of Birth "%><font color="white">*</font></td>
+          <td><%= f.date_field :dob, :max => Date.new(Date.today.year-18,Date.today.mon,Date.today.mday)%></td>
+          <td><%= f.label "Date of Joining"%></td>
+          <td><%= f.date_field :doj, :max => Date.today%></td>
+        </tr>
+        <tr>
+          <td><%= f.label :department %></td>
+          <td><%= f.text_field :department %></td>
+          <td><%= f.label :designation %></td>
+          <td><%= f.text_field :designation %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "Contact "%><font color="white">*</font></td>
+          <td><%= f.text_field :contact, :pattern=>'\d*', :maxlength=>10, :minlength=>10%></td>
+          <td><%= f.label "Gender "%><font color="white">*</font></td>
+          <td><%= f.radio_button :gender, 'Male'%> Male <%= f.radio_button :gender, 'Female '%> Female <br><span style="color:white;"><%= @detail.errors[:gender][0] rescue nil%></span></td>
+        </tr>
+        <tr>
+          <td><%= f.label :address%></td>
+          <td><%= f.text_area :address, :rows => 1%></td>
+          <td><%= f.label :city%></td>
+          <td><%= f.text_field :city%></td>
+        </tr>
+        <tr>
+          <td><%= f.label :state%></td>
+          <td><%= f.select :state, [['State',nil],'Andaman and Nicobar Islands','Andhra Pradesh','Arunachal Pradesh','Assam',
+            'Bihar','Chandigarh','Chhattisgarh','Dadra and Nagar Haveli','Daman and Diu','Delhi','Goa','Gujarat','Haryana',
+            'Himachal Pradesh','Jammu and Kashmir','Jharkhand','Karnataka','Kerala','Ladakh','Lakshadweep','Madhya Pradesh',
+            'Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Puducherry','Punjab','Rajasthan','Sikkim','Tamil Nadu',
+            'Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal']%></td>
+          <td><%= f.label :country%></td>
+          <td><%= f.select :country, [['Country',nil],'India']%></td>
+        </tr>
+        <tr>
+          <td><%= f.label "Pincode"%></td>
+          <td><%= f.text_field :pincode, :pattern=>'\d*', :maxlength=>6, :minlength=>6%></td>
+          <td><%= f.label "Blood Type"%></td>
+          <td><%= f.select :bloodgroup, [['Blood Type',nil],'AB+','AB-','A+','A-','B+','B-','O+','O-']%></td>
+        </tr>
+        <tr>
+          <td><%= f.submit "Next" %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+</table>
+<pre>
+</pre>
+<% end%>

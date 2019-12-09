@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <fieldset>
+      <table>
+        <tr>
+          <td colspan="4"><img src="http://www.exalogic.in/wp-content/uploads/2018/08/exalogic.png" height="60" alt="Exalogic"></td>
+        </tr>
+        <tr>
+          <td colspan="4" height="7"></td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align:center;">Exalogic Solutions Pvt Ltd</td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align:center;">22, Ganganagar, 1st Main Road, Bangalore - 560032, India</td>
+        </tr>
+        <tr>
+          <td colspan="4" height="10"></td>
+        </tr>
+        <tr>
+          <td colspan="4"><hr></td>
+        </tr>
+        <tr>
+          <td colspan="4"><%= @mon %></td>
+        </tr>
+        <tr>
+          <td colspan="4"><hr></td>
+        </tr>
+        <tr>
+          <td><strong>Employee ID</strong></td><td><%= @detail.empid %></td>
+          <td><strong>Name</strong></td><td><%= @detail.fname %></td>
+        </tr>
+        <tr>
+          <td><strong>Department</strong></td><td><%= @detail.department %></td>
+          <td><strong>Designation</strong></td><td><%= @detail.designation %></td>
+        </tr>
+        <tr>
+          <td><strong>Date of Joining</strong></td><td><%= @detail.doj %></td>
+          <td><strong></strong></td><td><%=  %></td>
+        </tr>
+        <tr>
+          <td><strong>Bank Account</strong></td><td><%= @account.accno %></td>
+          <td><strong>Bank Name</strong></td><td><%= @account.bank %>, <%= @account.branch %></td>
+        </tr>
+        <tr>
+          <td colspan="4" height="15"></td>
+        </tr>
+        <table style="border:1px solid black;text-align:center;">
+          <tr>
+            <th>Earnings</th>
+            <th>Amount</th>
+            <th>Deductions</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td colspan="4"><hr></td>
+          </tr>
+          <tr>
+            <td>Basic Pay</td><td><%= @payslip.basic.to_i %></td>
+            <td>Professional Tax</td><td><%= @payslip.p_tax.to_i %></td>
+          </tr>
+          <tr>
+            <td>HRA</td><td><%= @payslip.hra.to_i %></td>
+            <td>Loss of Pay</td><td><%= @payslip.lop.to_i %></td>
+          </tr>
+          <tr>
+            <td>CCA</td><td><%= @payslip.cca.to_i %></td>
+            <td>Deductions</td><td><%= @payslip.deduction.to_i %></td>
+          </tr>
+          <tr>
+            <td>Special Allowance</td><td><%= @payslip.spl_all.to_i %></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <td>Transport Allowance</td><td><%= @payslip.trans_all.to_i %></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <td colspan="4"><hr></td>
+          </tr>
+          <tr>
+            <th>Total Earnings</th><td><%= @payslip.gross.to_i %></td>
+            <th>Total Deductions</th><td><%= (@payslip.lop+@payslip.p_tax+@payslip.deduction).to_i %></td>
+          </tr>
+          <tr>
+            <td colspan="4"><hr></td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <th>Net Pay</th><td><%= @payslip.net.to_i %></td>
+          </tr>
+        </table>
+        <tr>
+          <td colspan="4"><br></td>
+        </tr>
+        <tr>
+          <td><strong>Net Pay</strong> (in words) : </td>
+        </tr>
+        <tr>
+          <td colspan="2"> <%= @payslip.net.to_i %></td>
+        </tr>
+        <tr>
+          <td colspan="4"><hr></td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align:center;">***This is a system generated payslip and does not require signature</td>
+        </tr>
+      </table>
+    </fieldset>
+  </body>
+</html>

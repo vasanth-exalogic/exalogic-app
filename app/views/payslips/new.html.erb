@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="font-bebas" style="color:white;">
+      GENERATE PAYSLIP
+    </div>
+    <%= form_for @payslip do |f|%>
+        <span><%= @create_error%></span>
+        <table class="table table-striped table-dark">
+          <div class="font-beba-small">
+          <tr>
+            <td><%= f.label "Employee ID"%></td>
+            <td><%= @detail.empid%></td>
+            <td><%= f.label "Employee Name"%></td>
+            <td><%= @detail.fname%></td>
+          </tr>
+          <tr>
+            <td><%= f.label "Generate for"%></td>
+            <td><%= f.select :month, [['MONTH',0],['JANUARY',1],['FEBUARY',2],['MARCH',3],['APRIL',4],['MAY',5],['JUNE',6],['JULY',7],['AUGUST',8],['SEPTEMBER',9],
+              ['OCTOBER',10],['NOVEMBER',11],['DECEMBER',12]]%></td>
+            <td><%= f.label "Year"%></td>
+            <td><%= f.number_field :year, :min=>(@detail.doj.strftime("%Y").to_i), :max=>(Time.now.strftime("%Y").to_i)%></td>
+          </tr>
+          <tr>
+            <td><%= f.label "Basic Pay"%></td>
+            <td><%= f.number_field :basic, :min=>0%></td>
+            <td><%= f.label "Reimbursments"%></td>
+            <td><%= f.number_field :reimb, :min=>0%></td>
+          </tr>
+          <tr>
+            <td><%= f.label "Number of leaves in days"%></td>
+            <td><%= f.number_field :days, :min=>0%></td>
+            <td><%= f.label "Other Deductions"%></td>
+            <td><%= f.number_field :deduction, :min=>0%></td>
+          </tr>
+          <tr>
+            <td><%= f.submit "Update"%></td>
+            <td colspan="3"><span><%= @error %></span></td>
+          </tr>
+        </table>
+    <% end %>
+    <pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </pre>
+  </body>
+</html>

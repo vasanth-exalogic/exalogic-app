@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pay_id: MyString
+  basic: MyString
+  hra: MyString
+  cca: MyString
+  spl_all: MyString
+  trans_all: MyString
+  reimb: MyString
+  lop: MyString
+  deduction: MyString
+  p_tax: MyString
+  gross: MyString
+  net: MyString
+  ctc: MyString
+  user_id: MyString
+
+two:
+  pay_id: MyString
+  basic: MyString
+  hra: MyString
+  cca: MyString
+  spl_all: MyString
+  trans_all: MyString
+  reimb: MyString
+  lop: MyString
+  deduction: MyString
+  p_tax: MyString
+  gross: MyString
+  net: MyString
+  ctc: MyString
+  user_id: MyString

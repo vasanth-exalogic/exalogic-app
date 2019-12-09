@@ -1,0 +1,38 @@
+<%= form_for @user do |f|%>
+<span><%= @create_error%></span>
+<table class="table table-striped table-dark">
+  <% if session[:temp]=='edit' %>
+    <tr>
+      <td class=" active-tab" style="vertical-align:middle;"><a href="#" style="color:white; text-decoration:none;"><label>Login Details</label></a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_detail_path(@user) %>" style="color:grey; text-decoration:none;"><label>Personal Details</label></a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_additional_path(@user) %>" style="color:grey; text-decoration:none;"><label>Additional Details</label></a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_account_path(@user) %>" style="color:grey; text-decoration:none;"><label>Account Details</label></a></td>
+    </tr>
+  <% else %>
+    <tr>
+      <td class=" active-tab" style="vertical-align:middle;"><label>Login Details</label></td>
+      <td class="" style="vertical-align:middle; color:grey;"><label>Personal Details</label></td>
+      <td class="" style="vertical-align:middle; color:grey;"><label>Additional Details</label></td>
+      <td class="" style="vertical-align:middle; color:grey;"><label>Account Details</label></td>
+    </tr>
+  <% end%>
+  <tr>
+    <td><%= f.label "Email"%><font color="red"> *</font></td>
+    <td><%= f.email_field :email, :required=>true%></td>
+    <td><%= f.label "Role"%><font color="red"> *</font></td>
+    <td><%= f.select :role, [['User','user'],['Admin','admin']] %><span><%= @user.errors[:role][0] rescue nil%></span></td>
+  </tr>
+  <tr>
+    <td><%= f.label "Password"%></td>
+    <td><%= f.password_field :password, :minlength => 6%></td>
+    <td><%= f.label "Confirm Password"%></td>
+    <td><%= f.password_field :password_confirmation, :minlength => 6%></td>
+  </tr>
+  <tr>
+    <td><%= f.submit "Next"%></td>
+    <td colspan="3"><span><%= @error %></span></td>
+  </tr>
+</table>
+<pre>
+</pre>
+<% end%>

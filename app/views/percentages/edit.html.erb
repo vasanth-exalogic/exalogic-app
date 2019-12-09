@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="font-bebas">
+      UPDATE SALARY DEFAULTS
+    </div>
+    <%= form_for @percentage do |f|%>
+        <span><%= @create_error%></span>
+        <table class="table table-striped table-dark">
+          <div class="font-beba-small">
+          <tr>
+            <td><%= f.label "HRA Percentage"%></td>
+            <td><%= f.number_field :hra_per, :min => 0%></td>
+
+          </tr>
+          <tr>
+            <td><%= f.label "CCA Percentage"%></td>
+            <td><%= f.number_field :cca_per, :min => 0%></td>
+          </tr>
+          <tr>
+            <td><%= f.label "Special Allowance Percentage"%></td>
+            <td><%= f.number_field :spl_all_per, :min => 0%></td>
+
+          </tr>
+          <tr>
+            <td><%= f.label "Transport Allowance Percentage"%></td>
+            <td><%= f.number_field :trans_all_per, :min => 0%></td>
+          </tr>
+
+          <tr>
+            <td><%= f.submit "Update"%></td>
+            <td colspan="3"><span><%= @error %></span></td>
+          </tr>
+        </table>
+        <pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </pre>
+        <% end%>
+  </body>
+</html>

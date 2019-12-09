@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hra_per: MyString
+  cca_per: MyString
+  spl_all_per: MyString
+  trans_all_per: MyString
+
+two:
+  hra_per: MyString
+  cca_per: MyString
+  spl_all_per: MyString
+  trans_all_per: MyString

@@ -1,0 +1,2 @@
+class Percentage < ApplicationRecord
+end
