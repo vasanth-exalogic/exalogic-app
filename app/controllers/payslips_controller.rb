@@ -52,15 +52,18 @@ class PayslipsController < ApplicationController
     @temp = @payslip.month.to_i.humanize
 		dict = {"one" => "January", "two" => "Febraury", "three" => "March", "four" => "April", "five" => "May", "six" => "June", "seven" => "July", "eight" => "August", "nine" => "September", "ten" => "October", "eleven" => "November", "twelve" => "December"}
 		@temp = dict[@temp]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = PayslipPdf.new(@payslip,@temp)
+        send_data pdf.render, filename: "payslip_#{@payslip.id}.pdf", type: "application/pdf"
+
+      end
+    end
   end
 
   def download
-    pdf = WickedPdf.new.pdf_from_string(            #1
-      render_to_string('download', layout: false))  #2
-    send_data(pdf,                                  #3
-      filename: 'download.pdf',                     #4
-      type: 'application/pdf',                      #5
-      disposition: 'attachment')                    #6
+
   end
 
   private

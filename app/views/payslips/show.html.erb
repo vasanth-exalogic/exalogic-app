@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    
+
   </head>
   <body>
+      <%= link_to 'Download Payslip', "/payslips/"<<@payslip.id.to_s<<".pdf", :target => '_blank' %>
       <fieldset>
         <table>
           <tr>

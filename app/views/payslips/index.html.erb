@@ -22,7 +22,7 @@
             <td><%= pay.month.to_s.rjust(2,"0")%> - <%= pay.year%></td>
             <td><%= pay.net %></td>
             <td><%= link_to "View Payslip", payslip_path(pay), :target => "_blank" %></td>
-            <td><%= link_to 'Download PDF', download_path(pay), :target => '_blank' %></td>
+            <td><%= link_to 'Download', "/payslips/"<<pay.id.to_s<<".pdf", :target => '_blank' %></td>
           </tr>
         <% end %>
     </table>
