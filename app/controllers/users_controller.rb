@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @error
-    if @user.update(account_params)
+    if @user.update(user_params)
       redirect_to edit_detail_path(@user)
     else
       @error = "Please fill all the mandatory fields"
