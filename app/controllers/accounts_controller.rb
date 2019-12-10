@@ -6,11 +6,20 @@ class AccountsController < ApplicationController
   end
 
   def create
+    @error
     @account = Account.new(account_params)
     @account.user_id = session[:id]
-    if @account.save
-      redirect_to users_path
+    if Razorpay::IFSC::IFSC.valid?(@account.ifsc)
+      temp = Razorpay::IFSC::IFSC.find(@account.ifsc)
+      @account.bank = temp.bank
+      @account.branch = temp.branch
+      if @account.save
+        redirect_to users_path
+      else
+        render "new"
+      end
     else
+      @error = "Enter valid IFSC Code"
       render "new"
     end
   end
@@ -21,7 +30,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    @account = Account.find_by(user_id: params[:id])
+    @account = Account.find(params[:id])
     @error
     if @account.update(account_params)
       redirect_to user_path(@account.user_id)

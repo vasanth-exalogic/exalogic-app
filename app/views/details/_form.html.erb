@@ -1,20 +1,11 @@
 <%= form_for @detail do |f|%>
 <table class="table table-striped table-dark">
-  <% if session[:temp]=='edit' %>
-    <tr>
-      <td class="" style="vertical-align:middle;"><a href="#" style="color:grey; text-decoration:none;"><label>Login Details</label></a></td>
-      <td class="active-tab" style="vertical-align:middle;"><a href="<%= edit_detail_path(@detail) %>" style="color:white; text-decoration:none;"><label>Personal Details</label></a></td>
-      <td class="" style="vertical-align:middle;"><a href="<%= edit_additional_path(@detail) %>" style="color:grey; text-decoration:none;"><label>Additional Details</label></a></td>
-      <td class="" style="vertical-align:middle;"><a href="<%= edit_account_path(@detail) %>" style="color:grey; text-decoration:none;"><label>Account Details</label></a></td>
-    </tr>
-  <% else %>
     <tr>
       <td class="" style="vertical-align:middle; color:grey;"><label>Login Details</label></td>
       <td class="active-tab" style="vertical-align:middle;"><label>Personal Details</label></td>
       <td class="" style="vertical-align:middle; color:grey;"><label>Additional Details</label></td>
       <td class="" style="vertical-align:middle; color:grey;"><label>Account Details</label></td>
     </tr>
-  <% end%>
         <tr>
           <td><%= f.label "Employee ID"%></td>
           <td><%= "EXA" << (session[:id].to_s).rjust(4,"0") %></td>

@@ -44,9 +44,15 @@
     <header class="bg-light">
       <div class="container">
         <nav class="navbar navbar-expand-md">
-          <a class="navbar-brand" href="/users">
+          <% if session[:user_type] == 'admin'%>
+            <a class="navbar-brand" href="/users">
+              <img src="http://www.exalogic.in/wp-content/uploads/2018/08/exalogic.png" height="40" alt="image">
+            </a>
+          <% else %>
+          <a class="navbar-brand" href="/users/<%= session[:user_id] %>">
             <img src="http://www.exalogic.in/wp-content/uploads/2018/08/exalogic.png" height="40" alt="image">
           </a>
+          <% end %>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav9" aria-controls="navbarNav9" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,16 +60,21 @@
 
           <div class="collapse navbar-collapse" id="navbarNav9">
             <ul class="navbar-nav mr-auto">
+              <% if session[:user_type] == 'admin' %>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/users">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/new">Registration</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/percentages/1/edit">Salary Defaults</a>
+                  </li>
+              <% else %>
               <li class="nav-item active">
-                <a class="nav-link" href="/users">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/users/<%= session[:user_id] %>">Home <span class="sr-only">(current)</span></a>
               </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="/users/new">Registration</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/percentages/1/edit">Salary Defaults</a>
-              </li>
+              <% end %>
               <li class="nav-item">
                 <a class="nav-link" href="#footer">Contact Us</a>
               </li>

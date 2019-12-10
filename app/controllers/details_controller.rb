@@ -25,7 +25,7 @@ class DetailsController < ApplicationController
   end
 
   def update
-    @detail = Detail.find_by(user_id: params[:id])
+    @detail = Detail.find(params[:id])
     @error
     if @detail.update(detail_params)
       redirect_to edit_additional_path(@detail.user_id)

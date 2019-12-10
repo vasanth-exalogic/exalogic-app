@@ -25,7 +25,7 @@ class AdditionalsController < ApplicationController
   end
 
   def update
-    @additional = Additional.find_by(user_id: params[:id])
+    @additional = Additional.find(params[:id])
     @error
     if @additional.update(additional_params)
       redirect_to edit_account_path(@additional.user_id)
