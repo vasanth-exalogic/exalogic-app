@@ -58,7 +58,6 @@ class PayslipsController < ApplicationController
       format.pdf do
         pdf = PayslipPdf.new(@payslip,@temp)
         send_data pdf.render, filename: "payslip_#{@payslip.id}.pdf", type: "application/pdf"
-
       end
     end
   end
