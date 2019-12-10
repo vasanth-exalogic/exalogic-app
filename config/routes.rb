@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/payslips/:id/all' => "payslips#index", as: "all_payslips"
   get '/payslips/new/:id' => "payslips#new", as: "new_payslip"
   get "payslips" => "users#index"
+  delete '/delete/payslip/:id' => "payslips#destroy", as: "delete_payslip"
 
   get '/download/:id' => "payslips#download", as: 'download'
 end

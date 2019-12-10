@@ -63,8 +63,11 @@ class PayslipsController < ApplicationController
     end
   end
 
-  def download
-
+  def destroy
+    @payslip = Payslip.find(params[:id])
+    @user = User.find(@payslip.user_id)
+    @payslip.delete
+    redirect_to all_payslips_path(@user)
   end
 
   private
