@@ -35,6 +35,7 @@ class PayslipsController < ApplicationController
         if @payslip.save
           redirect_to payslip_path(@payslip)
         else
+          @error = "Payslip already created"
           render "new"
         end
       else
@@ -42,7 +43,12 @@ class PayslipsController < ApplicationController
         render "new"
       end
     else
-      render "new"
+      if @payslip.save
+        redirect_to payslip_path(@payslip)
+      else
+        @error = "Payslip already created"
+        render "new"
+      end
     end
   end
 
