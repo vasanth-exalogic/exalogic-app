@@ -28,8 +28,9 @@ class PayslipPdf < Prawn::Document
     move_down 20
     table_data = [[{content: "Employee ID", :font_style => :bold},@detail.empid,{content: "Name", :font_style => :bold},@account.accname],
                   [{content: "Department", :font_style => :bold},@detail.department,{content: "Designation", :font_style => :bold},@detail.designation],
-                  [{content: "Date of Joining", :font_style => :bold},@detail.doj,{content: "Account Number", :font_style => :bold},@account.accno],
-                  [{content: "Bank", :font_style => :bold},@account.bank<<", "<<@account.branch,{content: "IFSC Code", :font_style => :bold},@account.ifsc]]
+                  [{content: "Date of Joining", :font_style => :bold},@detail.doj,{content: "Number of Days", :font_style => :bold},@payslip.no_days],
+                  [{content: "Account Number", :font_style => :bold},@account.accno,{content: "Bank", :font_style => :bold},@account.bank<<", "<<@account.branch],
+                  [{content: "IFSC Code", :font_style => :bold},@account.ifsc,nil,nil]]
     table(table_data, :width=>540, :cell_style => {:border_width => 0})
   end
 
