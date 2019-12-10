@@ -20,12 +20,12 @@ class AdditionalsController < ApplicationController
   end
 
   def edit
-    @additional = Additional.find_by(user_id: params[:id])
+    @additional = Additional.find(params[:id])
     session[:temp]='edit'
   end
 
   def update
-    @additional = Additional.find_by(user_id: params[:id])
+    @additional = Additional.find(params[:id])
     @error
     if @additional.update(additional_params)
       redirect_to new_account_path(@additional)

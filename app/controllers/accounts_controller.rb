@@ -16,12 +16,12 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = Account.find_by(user_id: params[:id])
+    @account = Account.find(params[:id])
     session[:temp]='edit'
   end
 
   def update
-    @account = Account.find_by(user_id: params[:id])
+    @account = Account.find(params[:id])
     @error
     if @account.update(account_params)
       redirect_to user_path(@account)
