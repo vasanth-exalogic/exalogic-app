@@ -30,6 +30,7 @@ class PayslipsController < ApplicationController
     @payslip.net = (@payslip.gross - (@payslip.lop+@payslip.deduction+@payslip.p_tax)).to_i
     @payslip.basic = @payslip.basic + (@payslip.gross-(@payslip.basic+@payslip.hra+@payslip.cca+@payslip.spl_all+@payslip.trans_all))
     @payslip.ctc = @payslip.gross*12
+    @payslip.no_days = find_days(@payslip.month,@payslip.year)
     if @payslip.year == (@detail.doj.strftime("%Y").to_i)
       if @payslip.month >= (@detail.doj.strftime("%m").to_i)
         if @payslip.save
@@ -86,6 +87,22 @@ class PayslipsController < ApplicationController
       200
     else
       0
+    end
+  end
+
+  def find_days(month,year)
+    t31 = [1,3,5,7,8,10,12]
+    t30 = [4,6,9,11]
+    if t31.include?(month)
+      31
+    elsif t30.include?(month)
+      30
+    else
+      if year%4==0 && year%100==0 && year%400==0
+        29
+      else
+        28
+      end
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_045924) do
+ActiveRecord::Schema.define(version: 2019_12_10_113904) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "accname"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_045924) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "month"
     t.integer "year"
+    t.integer "no_days", default: 0
   end
 
   create_table "percentages", force: :cascade do |t|
