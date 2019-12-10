@@ -1,5 +1,4 @@
 class PayslipsController < ApplicationController
-  before_action :is_admin?
   layout "payslip", only: [:show]
 
   def index

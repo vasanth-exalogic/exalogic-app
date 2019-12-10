@@ -24,7 +24,6 @@ class AccountsController < ApplicationController
     @account = Account.find_by(user_id: params[:id])
     @error
     if @account.update(account_params)
-      session[:id] = @account.id
       redirect_to user_path(@account)
     else
       @error = "Please fill all the mandatory fields"

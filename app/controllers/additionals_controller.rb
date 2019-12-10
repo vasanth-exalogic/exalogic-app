@@ -28,7 +28,6 @@ class AdditionalsController < ApplicationController
     @additional = Additional.find_by(user_id: params[:id])
     @error
     if @additional.update(additional_params)
-      session[:id] = @additional.id
       redirect_to new_account_path(@additional)
     else
       @error = "Please fill all the mandatory fields"

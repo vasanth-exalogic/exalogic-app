@@ -35,10 +35,20 @@ class UsersController < ApplicationController
   end
 
   def edit
-    session[:temp] = 'edit'
+    @user = User.find(params[:id])
+    session[:id] = @user.id
+    session[:temp]='edit'
   end
 
   def update
+    @user = User.find(params[:id])
+    @error
+    if @user.update(account_params)
+      redirect_to edit_detail_path(@user)
+    else
+      @error = "Please fill all the mandatory fields"
+      render 'edit'
+    end
   end
 
   def destroy
