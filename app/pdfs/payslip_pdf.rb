@@ -18,32 +18,32 @@ class PayslipPdf < Prawn::Document
   def line_items_1
     image "#{Rails.root}/app/assets/images/exalogic.png", :width => 120
     move_down 10
-    table_data = [[{ content: "Exalogic Solutions", colspan: 4, align: :center } ],
-          [{ content: "22, Ganganagar, 1st Main Road, Bangalore - 560032, India", colspan: 4, align: :center }],
-          [{ content: @month<<" - "<<@payslip.year.to_s<<" - Payslip", colspan: 4, align: :center  }],]
+    table_data = [[{ content: "Exalogic Solutions", colspan: 4, align: :center, :font_style => :bold} ],
+          [{ content: "22, Ganganagar, 1st Main Road, Bangalore - 560032, India", colspan: 4, align: :center, :font_style => :bold}],
+          [{ content: @month<<" - "<<@payslip.year.to_s<<" - Payslip", colspan: 4, align: :center, :font_style => :bold}],]
     table(table_data, :width=>540, :cell_style => {:border_width => 0})
   end
 
   def line_items
     move_down 20
-    table_data = [["Emplyee ID",@detail.empid,"Name",@account.accname],
-                  ["Department",@detail.department,"Designation",@detail.designation],
-                  ["Date of Joining",@detail.doj,"Account Number",@account.accno],
-                  ["Bank",@account.bank<<", "<<@account.branch,"IFSC Code",@account.ifsc]]
+    table_data = [[{content: "Employee ID", :font_style => :bold},@detail.empid,{content: "Name", :font_style => :bold},@account.accname],
+                  [{content: "Department", :font_style => :bold},@detail.department,{content: "Designation", :font_style => :bold},@detail.designation],
+                  [{content: "Date of Joining", :font_style => :bold},@detail.doj,{content: "Account Number", :font_style => :bold},@account.accno],
+                  [{content: "Bank", :font_style => :bold},@account.bank<<", "<<@account.branch,{content: "IFSC Code", :font_style => :bold},@account.ifsc]]
     table(table_data, :width=>540, :cell_style => {:border_width => 0})
   end
 
   def line_items_2
     move_down 30
-    table_data = [[{content: "EARNINGS", align: :center},{content: "AMOUNT", align: :center},{content: "DEDUCTIONS", align: :center},{content: "AMOUNT", align: :center}],
-                  ["Basic Pay",@payslip.basic.to_i,"Professional Tax",@payslip.p_tax.to_i],
-                  ["HRA",@payslip.hra.to_i,"Loss of Pay",@payslip.lop.to_i],
-                  ["CCA",@payslip.cca.to_i,"Deductions",@payslip.deduction.to_i],
-                  ["Special Allowance",@payslip.spl_all.to_i,nil,nil],
-                  ["Transport Allowance",@payslip.trans_all.to_i,nil,nil],
-                  ["Reimbursments",@payslip.reimb.to_i,nil,nil],
-                  ["Total Earnings",@payslip.gross.to_i,"Total Deductions",(@payslip.deduction+@payslip.lop+@payslip.p_tax).to_i],
-                  [nil,nil,"Net Pay",@payslip.net.to_i]]
+    table_data = [[{content: "EARNINGS", align: :center, :font_style => :bold},{content: "AMOUNT", align: :center, :font_style => :bold},{content: "DEDUCTIONS", align: :center, :font_style => :bold},{content: "AMOUNT", align: :center, :font_style => :bold}],
+                  ["Basic Pay",{content: "#{@payslip.basic.to_i}", align: :center},"Professional Tax",{content: "#{@payslip.p_tax.to_i}", align: :center}],
+                  ["HRA",{content: "#{@payslip.hra.to_i}", align: :center},"Loss of Pay",{content: "#{@payslip.lop.to_i}", align: :center}],
+                  ["CCA",{content: "#{@payslip.cca.to_i}", align: :center},"Deductions",{content: "#{@payslip.deduction.to_i}", align: :center}],
+                  ["Special Allowance",{content: "#{@payslip.spl_all.to_i}", align: :center},nil,nil],
+                  ["Transport Allowance",{content: "#{@payslip.trans_all.to_i}", align: :center},nil,nil],
+                  ["Reimbursments",{content: "#{@payslip.reimb.to_i}", align: :center},nil,nil],
+                  [{content: "Total Earnings", :font_style => :bold},{content: "#{@payslip.gross.to_i}", align: :center},{content: "Total Deductions", :font_style => :bold},{content: "#{(@payslip.deduction+@payslip.lop+@payslip.p_tax).to_i}", align: :center}],
+                  [nil,nil,{content: "Net Pay", :font_style => :bold},{content: "#{@payslip.net.to_i}", align: :center}]]
     table(table_data, :width=>540)
   end
 
@@ -51,6 +51,6 @@ class PayslipPdf < Prawn::Document
     move_down 30
     text "Net Pay (in words) : "  << @payslip.net.humanize.capitalize << " rupees only"
     move_down 30
-    text "***This is a system generated payslip and does not require signature"
+    text "***This is a system generated payslip and does not require signature", align: :center
   end
 end
