@@ -1,4 +1,4 @@
-class AdditionalsController < ApplicationController
+_bycuser_id: lass AdditionalsController < ApplicationController
 
   before_action :is_admin?
 
@@ -20,15 +20,15 @@ class AdditionalsController < ApplicationController
   end
 
   def edit
-    @additional = Additional.find(params[:id])
+    @additional = Additional.find_by(user_id: params[:id])
     session[:temp]='edit'
   end
 
   def update
-    @additional = Additional.find(params[:id])
+    @additional = Additional.find_by(user_id: params[:id])
     @error
     if @additional.update(additional_params)
-      redirect_to edit_account_path(@additional)
+      redirect_to edit_account_path(@additional.user_id)
     else
       @error = "Please fill all the mandatory fields"
       render 'edit'

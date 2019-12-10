@@ -20,15 +20,15 @@ class DetailsController < ApplicationController
   end
 
   def edit
-    @detail = Detail.find(params[:id])
+    @detail = Detail.find_by(user_id: params[:id])
     session[:temp]='edit'
   end
 
   def update
-    @detail = Detail.find(params[:id])
+    @detail = Detail.find_by(user_id: params[:id])
     @error
     if @detail.update(detail_params)
-      redirect_to edit_additional_path(@detail)
+      redirect_to edit_additional_path(@detail.user_id)
     else
       @error = "Please fill all the mandatory fields"
       render 'edit'
