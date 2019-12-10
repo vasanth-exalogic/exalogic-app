@@ -1,4 +1,4 @@
-_bycuser_id: lass AdditionalsController < ApplicationController
+class AdditionalsController < ApplicationController
 
   before_action :is_admin?
 
