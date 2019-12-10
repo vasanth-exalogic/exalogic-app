@@ -29,7 +29,7 @@
         <tr>
           <td><%= f.label "Date of Birth "%><font color="white">*</font></td>
           <td><%= f.date_field :dob, :max => Date.new(Date.today.year-18,Date.today.mon,Date.today.mday), :required=>true%></td>
-          <td><%= f.label "Date of Joining"%></td>
+          <td><%= f.label "Date of Joining"%><font color="white">*</font></td>
           <td><%= f.date_field :doj, :max => Date.today, :required=>true%></td>
         </tr>
         <tr>
