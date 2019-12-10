@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-
+  layout "payslip"
+  
   def index
-    session[:page] = "login"
   end
 
   def create

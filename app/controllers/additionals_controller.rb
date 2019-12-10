@@ -20,9 +20,20 @@ class AdditionalsController < ApplicationController
   end
 
   def edit
+    @additional = Additional.find(params[:id])
+    session[:temp]='edit'
   end
 
   def update
+    @additional = Additional.find(params[:id])
+    @error
+    if @additional.update(additional_params)
+      session[:id] = @additional.id
+      redirect_to new_account_path(@additional)
+    else
+      @error = "Please fill all the mandatory fields"
+      render 'edit'
+    end
   end
 
   private

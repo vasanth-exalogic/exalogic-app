@@ -20,9 +20,20 @@ class DetailsController < ApplicationController
   end
 
   def edit
+    @detail = Detail.find(params[:id])
+    session[:temp]='edit'
   end
 
   def update
+    @detail = Detail.find(params[:id])
+    @error
+    if @detail.update(additional_params)
+      session[:id] = @detail.id
+      redirect_to new_additional_path(@detail)
+    else
+      @error = "Please fill all the mandatory fields"
+      render 'edit'
+    end
   end
 
   private

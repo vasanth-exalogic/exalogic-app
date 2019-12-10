@@ -16,9 +16,20 @@ class AccountsController < ApplicationController
   end
 
   def edit
+    @account = Account.find(params[:id])
+    session[:temp]='edit'
   end
 
   def update
+    @account = Account.find(params[:id])
+    @error
+    if @account.update(account_params)
+      session[:id] = @account.id
+      redirect_to user_path(@account)
+    else
+      @error = "Please fill all the mandatory fields"
+      render 'edit'
+    end
   end
 
   private

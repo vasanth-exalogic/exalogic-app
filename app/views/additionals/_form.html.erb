@@ -2,10 +2,10 @@
 <table class="table table-striped table-dark">
   <% if session[:temp]=='edit' %>
     <tr>
-      <td class="" style="vertical-align:middle;"><a href="<%= edit_user_path(@emergency) %>" style="color:grey; text-decoration:none;">Login Details</a></td>
-      <td class="" style="vertical-align:middle;"><a href="<%= edit_detail_path(@emergency) %>" style="color:grey; text-decoration:none;">Personal Details</a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_user_path(@additional) %>" style="color:grey; text-decoration:none;">Login Details</a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_detail_path(@additional) %>" style="color:grey; text-decoration:none;">Personal Details</a></td>
       <td class="active-tab" style="vertical-align:middle;"><a href="#" style="color:white; text-decoration:none;">Additional Details</a></td>
-      <td class="" style="vertical-align:middle;"><a href="<%= edit_account_path(@emergency) %>" style="color:grey; text-decoration:none;">Accountails</a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_account_path(@additional) %>" style="color:grey; text-decoration:none;">Account Details</a></td>
     </tr>
   <% else %>
     <tr>

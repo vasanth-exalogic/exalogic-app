@@ -42,6 +42,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    detail = Detail.find_by(user_id: user.id)
+    additional = Additional.find_by(user_id: user.id)
+    account = Account.find_by(user_id: user.id)
+    user.delete
+    detail.delete
+    additional.delete
+    account.delete
+    session[:user_type] = nil
+    redirect_to users_path
   end
 
   private

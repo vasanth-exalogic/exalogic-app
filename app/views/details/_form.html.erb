@@ -3,9 +3,9 @@
   <% if session[:temp]=='edit' %>
     <tr>
       <td class="" style="vertical-align:middle;"><a href="#" style="color:grey; text-decoration:none;"><label>Login Details</label></a></td>
-      <td class="active-tab" style="vertical-align:middle;"><a href="<%= edit_detail_path(@user) %>" style="color:white; text-decoration:none;"><label>Personal Details</label></a></td>
-      <td class="" style="vertical-align:middle;"><a href="<%= edit_additional_path(@user) %>" style="color:grey; text-decoration:none;"><label>Additional Details</label></a></td>
-      <td class="" style="vertical-align:middle;"><a href="<%= edit_account_path(@user) %>" style="color:grey; text-decoration:none;"><label>Account Details</label></a></td>
+      <td class="active-tab" style="vertical-align:middle;"><a href="<%= edit_detail_path(@detail) %>" style="color:white; text-decoration:none;"><label>Personal Details</label></a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_additional_path(@detail) %>" style="color:grey; text-decoration:none;"><label>Additional Details</label></a></td>
+      <td class="" style="vertical-align:middle;"><a href="<%= edit_account_path(@detail) %>" style="color:grey; text-decoration:none;"><label>Account Details</label></a></td>
     </tr>
   <% else %>
     <tr>
@@ -22,15 +22,15 @@
         </tr>
         <tr>
           <td><%= f.label "First Name "%><font color="white">*</font></td>
-          <td><%= f.text_field :fname%><span style="color:white;"><%= @detail.errors[:fname][0] rescue nil%></span></td>
+          <td><%= f.text_field :fname, :required=>true%><span style="color:white;"><%= @detail.errors[:fname][0] rescue nil%></span></td>
           <td><%= f.label "Last Name "%><font color="white">*</font></td>
-          <td><%= f.text_field :lname%><span style="color:white;"><%= @detail.errors[:lname][0] rescue nil%></span></td>
+          <td><%= f.text_field :lname, :required=>true%><span style="color:white;"><%= @detail.errors[:lname][0] rescue nil%></span></td>
         </tr>
         <tr>
           <td><%= f.label "Date of Birth "%><font color="white">*</font></td>
-          <td><%= f.date_field :dob, :max => Date.new(Date.today.year-18,Date.today.mon,Date.today.mday)%></td>
+          <td><%= f.date_field :dob, :max => Date.new(Date.today.year-18,Date.today.mon,Date.today.mday), :required=>true%></td>
           <td><%= f.label "Date of Joining"%></td>
-          <td><%= f.date_field :doj, :max => Date.today%></td>
+          <td><%= f.date_field :doj, :max => Date.today, :required=>true%></td>
         </tr>
         <tr>
           <td><%= f.label :department %></td>
@@ -40,9 +40,9 @@
         </tr>
         <tr>
           <td><%= f.label "Contact "%><font color="white">*</font></td>
-          <td><%= f.text_field :contact, :pattern=>'\d*', :maxlength=>10, :minlength=>10%></td>
+          <td><%= f.text_field :contact, :pattern=>'\d*', :maxlength=>10, :minlength=>10, :required=>true%></td>
           <td><%= f.label "Gender "%><font color="white">*</font></td>
-          <td><%= f.radio_button :gender, 'Male'%> Male <%= f.radio_button :gender, 'Female '%> Female <br><span style="color:white;"><%= @detail.errors[:gender][0] rescue nil%></span></td>
+          <td><%= f.radio_button :gender, 'Male', :required=>true%> Male <%= f.radio_button :gender, 'Female '%> Female <br><span style="color:white;"><%= @detail.errors[:gender][0] rescue nil%></span></td>
         </tr>
         <tr>
           <td><%= f.label :address%></td>

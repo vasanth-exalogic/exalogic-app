@@ -30,8 +30,8 @@
             <td><%= f.number_field :year, :min=>(@detail.doj.strftime("%Y").to_i), :max=>(Time.now.strftime("%Y").to_i)%></td>
           </tr>
           <tr>
-            <td><%= f.label "Basic Pay"%></td>
-            <td><%= f.number_field :basic, :min=>0%></td>
+            <td><%= f.label "Gross Salary"%></td>
+            <td><%= f.number_field :gross, :min=>0%></td>
             <td><%= f.label "Reimbursments"%></td>
             <td><%= f.number_field :reimb, :min=>0%></td>
           </tr>

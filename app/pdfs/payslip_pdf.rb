@@ -41,6 +41,7 @@ class PayslipPdf < Prawn::Document
                   ["CCA",@payslip.cca.to_i,"Deductions",@payslip.deduction.to_i],
                   ["Special Allowance",@payslip.spl_all.to_i,nil,nil],
                   ["Transport Allowance",@payslip.trans_all.to_i,nil,nil],
+                  ["Reimbursments",@payslip.reimb.to_i,nil,nil],
                   ["Total Earnings",@payslip.gross.to_i,"Total Deductions",(@payslip.deduction+@payslip.lop+@payslip.p_tax).to_i],
                   [nil,nil,"Net Pay",@payslip.net.to_i]]
     table(table_data, :width=>540)

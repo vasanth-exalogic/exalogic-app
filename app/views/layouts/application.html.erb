@@ -41,7 +41,6 @@
   </head>
 
   <body>
-    <% unless current_page?(root_path) || current_page?(sessions_path) || current_page?(new_session_path) || current_page?(signout_path) || current_page?(logout_path)%>
     <header class="bg-light">
       <div class="container">
         <nav class="navbar navbar-expand-md">
@@ -87,12 +86,10 @@
       </div>
     </header>
     <br>
-    <% end %>
 
     <div class="body-container">
       <%= yield %>
     </div>
-<% unless current_page?(root_path) || current_page?(sessions_path) || current_page?(new_session_path) || current_page?(signout_path) || current_page?(logout_path)%>
 <div class="footer" id="footer">
 <pre><h4>EXALOGIC SOLUTIONS</h4>No 21, 1st Main, Ganga nagar, Bangalore
 Karnataka, India - 560032
@@ -100,6 +97,5 @@ Karnataka, India - 560032
 <i class="fa fa-envelope" aria-hidden="true">  </i><a href="mailto:info@exalogic.in?subject=query">info@exalogic.in</a>
 <i class="fa fa-phone" aria-hidden="true">  </i><a href="tel:080- 48905017">080- 48905017</a>
 <a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></div>
-<% end %>
   </body>
 </html>
