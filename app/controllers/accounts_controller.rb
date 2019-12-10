@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
       @account.bank = temp.bank
       @account.branch = temp.branch
       if @account.save
-        redirect_to users_path
+        redirect_to user_path(@account.user_id)
       else
         render "new"
       end
