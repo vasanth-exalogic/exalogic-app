@@ -20,12 +20,12 @@ class AdditionalsController < ApplicationController
   end
 
   def edit
-    @additional = Additional.find(params[:id])
+    @additional = Additional.find_by(user_id: params[:id])
     session[:temp]='edit'
   end
 
   def update
-    @additional = Additional.find(params[:id])
+    @additional = Additional.find_by(user_id: params[:id])
     @error
     if @additional.update(additional_params)
       session[:id] = @additional.id

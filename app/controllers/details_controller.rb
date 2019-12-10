@@ -20,12 +20,12 @@ class DetailsController < ApplicationController
   end
 
   def edit
-    @detail = Detail.find(params[:id])
+    @detail = Detail.find_by(user_id: params[:id])
     session[:temp]='edit'
   end
 
   def update
-    @detail = Detail.find(params[:id])
+    @detail = Detail.find_by(user_id: params[:id])
     @error
     if @detail.update(additional_params)
       session[:id] = @detail.id
