@@ -38,7 +38,7 @@ class AdditionalsController < ApplicationController
   private
 
   def additional_params
-    params.require(:additional).permit(:ename,:econtact,:relation,:pskill,:sskill1,:sskill2,:user_id)
+    params.require(:additional).permit(:ename,:econtact,:relation,:pskill,:sskill1,:sskill2,:user_id, :notice)
   end
 
 end
