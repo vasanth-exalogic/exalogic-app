@@ -28,7 +28,7 @@ class AdditionalsController < ApplicationController
     @additional = Additional.find(params[:id])
     @error
     if @additional.update(additional_params)
-      redirect_to new_account_path(@additional)
+      redirect_to edit_account_path(@additional)
     else
       @error = "Please fill all the mandatory fields"
       render 'edit'

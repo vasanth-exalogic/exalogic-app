@@ -28,7 +28,7 @@ class DetailsController < ApplicationController
     @detail = Detail.find(params[:id])
     @error
     if @detail.update(detail_params)
-      redirect_to new_additional_path(@detail)
+      redirect_to edit_additional_path(@detail)
     else
       @error = "Please fill all the mandatory fields"
       render 'edit'
